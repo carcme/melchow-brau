@@ -49,7 +49,7 @@ const Gallery = () => {
   );
 };
 
-const Wrapper = styled.section`
+const Wrapper = styled.main`
   display: flex;
   flex-wrap: wrap;
   width: 90vw;

@@ -6,14 +6,6 @@ import Layout from "../components/Layout";
 import slugify from "slugify";
 import SEO from "../components/SEO";
 
-const capitalizeWords = (str) => {
-  return str
-    .toLowerCase()
-    .split(" ")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
-};
-
 const RecipeTemplate = ({ data }) => {
   const {
     title,
