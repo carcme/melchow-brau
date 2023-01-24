@@ -1,11 +1,17 @@
 import React from "react";
+import { Link } from "gatsby";
 
 const Footer = () => {
   return (
     <footer className="page-footer">
       <p>
-        &copy; {new Date().getFullYear()} <span>Melchow Brau</span> | Built with{" "}
-        <a href="https://www.gatsbyjs.com/">GatsbyJS</a>{" "}
+        &copy; {new Date().getFullYear()}{" "}
+        <Link to="/" className="span">
+          <span>Melchow Brau</span>{" "}
+        </Link>
+        | Built by {/* <a href="https://hammer3/"> */}
+        Hammer3
+        {/* </a>{" "} */}
       </p>
     </footer>
   );

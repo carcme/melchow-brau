@@ -8,7 +8,7 @@ const Error = () => {
     <SEO title="Error" />
       <main className='error-page'>
         <h1>404 Error</h1>
-        <p>Well thats embrassing :/</p>
+        <p>Well... thats embrassing :/</p>
       </main>
     </Layout>
   )

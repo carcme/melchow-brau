@@ -11,7 +11,7 @@ const Navbar = () => {
       <div className="nav-center">
         <div className="nav-header">
           <Link to="/">
-            <img src={logo} alt="Franks Beer logo" />
+            <img src={logo} alt="Melchow Brau logo" />
           </Link>
           <button className="nav-btn" onClick={() => setShow(!show)}>
             <FiAlignJustify />
@@ -28,12 +28,12 @@ const Navbar = () => {
             Home
           </Link>
           <Link
-            to="/recipes"
+            to="/brews"
             className="nav-link"
             activeClassName="active-link"
             onClick={() => setShow(false)}
           >
-            Recipes
+            Brews
           </Link>
           <Link
             to="/tags"

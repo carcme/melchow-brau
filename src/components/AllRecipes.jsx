@@ -7,8 +7,8 @@ const query = graphql`
   query {
     allContentfulRecipe(sort: { title: ASC }) {
       nodes {
-        title
         id
+        title
         featured
         cookTime
         prepTime

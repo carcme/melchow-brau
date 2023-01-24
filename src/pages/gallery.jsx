@@ -2,8 +2,8 @@ import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import Layout from "../components/Layout";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import styled from "styled-components";
 import SEO from "../components/SEO";
+import CapitaliseLetter from "../components/CapitaliseLetter";
 
 const query = graphql`
   {
@@ -13,7 +13,7 @@ const query = graphql`
         childImageSharp {
           gatsbyImageData(
             placeholder: TRACED_SVG
-            layout: FIXED
+            layout: CONSTRAINED
             width: 400
             height: 200
           )
@@ -29,7 +29,7 @@ const Gallery = () => {
   return (
     <Layout>
       <SEO title="Gallery" description="" />
-      <Wrapper>
+      <div className="page recipes-list">
         {nodes.map((image, index) => {
           const { name } = image;
           const pathToImage = getImage(image);
@@ -40,28 +40,13 @@ const Gallery = () => {
                 alt="gallery image"
                 className="gallery-img"
               />
-              <p>{name}</p>
+              <p>{CapitaliseLetter(name)}</p>
             </article>
           );
         })}
-      </Wrapper>
+      </div>
     </Layout>
   );
 };
 
-const Wrapper = styled.main`
-  display: flex;
-  flex-wrap: wrap;
-  width: 90vw;
-  justify-content: center;
-  max-width: 1600px;
-  margin: 0 auto;
-
-  .item {
-    margin-right: 1rem;
-  }
-  .gallery-img {
-    border-radius: 1rem;
-  }
-`;
 export default Gallery;
