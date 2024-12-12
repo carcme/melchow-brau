@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://melchow-brau.netlify.app/">
-    <img alt="melchow-brau" src="https://melchow-brau.netlify.app/static/logo-730d5b646585606ce3c4ef34f7b56475.png" width="60" />
+    <img alt="melchow-brau" src="https://melchow-brau.netlify.app/static/logo-730d5b646585606ce3c4ef34f7b56475.png" width="300" />
   </a>
 </p>
 <h1 align="center">
@@ -34,15 +34,41 @@ _Have another more specific idea? You may want to check out our vibrant collecti
 
 1.  **Open the source code and start editing!**
 
-    Your site is now running at `http://localhost:8000`!
+    Your site is now running at [`http://localhost:8000`](http://localhost:8000)!
 
-    Note: You'll also see a second link: `http://localhost:8000/___graphql`.
+    Note: You'll also see a second link: [`http://localhost:8000/___graphql`](http://localhost:8000/___graphql).
 
     Don't forget to create a `.env` file and add the CONTENTFUL_ACCESS_TOKEN key to it.
 
+1.  **Configure additional tools**
+
+- [Contentful](https://www.contentful.com/)
+<p align="center">
+  <a href="https://www.contentful.com">
+    <img alt="www.contentful.com" src="https://www.contentful.com/android-chrome-192x192.png" width="300" />
+  </a>
+</p>
+
+- [Netlify](https://www.netlify.com/)
+<p align="center">
+  <a href="https://www.netlify.com/">
+    <img alt="www.contentful.com" src="https://logowik.com/content/uploads/images/netlify-icon5435.logowik.com.webp" width="300" />
+  </a>
+</p>
+
+- [Formspree](https://formspree.io/)
+<p align="center">
+  <a href="https://formspree.io/">
+    <img alt="melchow-brau" src="https://formspree.io/img/formspree-new.svg" width="300" />
+  </a>
+</p>
+<h1 align="center">
+  Contact Form sourced via [Formspree.io](https://formspree.io/)
+</h1>
+
 # Future Reference
 
-    Delete as and when required
+Delete as and when required
 
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 
