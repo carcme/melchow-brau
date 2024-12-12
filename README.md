@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://melchow-brau.netlify.app/">
-    <img alt="melchow-brau" src="https://melchow-brau.netlify.app/static/logo-730d5b646585606ce3c4ef34f7b56475.png" width="300" />
+    <img alt="melchow-brau" src="https://melchow-brau.netlify.app/static/logo-730d5b646585606ce3c4ef34f7b56475.png" width="500" />
   </a>
 </p>
 <h1 align="center">
@@ -40,33 +40,27 @@ _Have another more specific idea? You may want to check out our vibrant collecti
 
     Don't forget to create a `.env` file and add the CONTENTFUL_ACCESS_TOKEN key to it.
 
-1.  **Configure additional tools**
+## :wrench: Configure additional tools
 
-- [Contentful](https://www.contentful.com/)
-<p align="center">
+<p align="left">
   <a href="https://www.contentful.com">
-    <img alt="www.contentful.com" src="https://www.contentful.com/android-chrome-192x192.png" width="300" />
+    <img alt="www.contentful.com" src="https://www.contentful.com/android-chrome-192x192.png" width="100" />
   </a>
 </p>
 
-- [Netlify](https://www.netlify.com/)
-<p align="center">
+<p align="left">
   <a href="https://www.netlify.com/">
-    <img alt="www.contentful.com" src="https://logowik.com/content/uploads/images/netlify-icon5435.logowik.com.webp" width="300" />
+    <img alt="www.contentful.com" src="https://logowik.com/content/uploads/images/netlify-icon5435.logowik.com.webp" width="200" />
   </a>
 </p>
 
-- [Formspree](https://formspree.io/)
-<p align="center">
+<p align="left">
   <a href="https://formspree.io/">
-    <img alt="melchow-brau" src="https://formspree.io/img/formspree-new.svg" width="300" />
+    <img alt="melchow-brau" src="https://formspree.io/img/formspree-new.svg" width="200" />
   </a>
 </p>
-<h1 align="center">
-  Contact Form sourced via [Formspree.io](https://formspree.io/)
-</h1>
 
-# Future Reference
+## :thinking: Future Reference
 
 Delete as and when required
 
