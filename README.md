@@ -1,11 +1,10 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
-  <a href="https://www.gatsbyjs.com">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
+  <a href="https://melchow-brau.netlify.app/">
+    <img alt="melchow-brau" src="https://melchow-brau.netlify.app/static/logo-730d5b646585606ce3c4ef34f7b56475.png" width="60" />
   </a>
 </p>
 <h1 align="center">
-  Gatsby's hello-world starter
+  Melchow Brewery built with Gatsby
 </h1>
 
 Kick off your project with this hello-world boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
@@ -14,13 +13,13 @@ _Have another more specific idea? You may want to check out our vibrant collecti
 
 ## 🚀 Quick start
 
-1.  **Create a Gatsby site.**
+1.  **Clone this site.**
 
     Use the Gatsby CLI ([install instructions](https://www.gatsbyjs.com/docs/tutorial/part-0/#gatsby-cli)) to create a new site, specifying the hello-world starter.
 
     ```shell
-    # create a new Gatsby site using the hello-world starter
-    gatsby new my-hello-world-starter https://github.com/gatsbyjs/gatsby-starter-hello-world
+    # create a new copy of the site
+    git clone https://github.com/carcme/melchow-brau.git
     ```
 
 1.  **Start developing.**
@@ -28,7 +27,8 @@ _Have another more specific idea? You may want to check out our vibrant collecti
     Navigate into your new site’s directory and start it up.
 
     ```shell
-    cd my-hello-world-starter/
+    cd melchow-brau/
+    npm install
     gatsby develop
     ```
 
@@ -36,9 +36,15 @@ _Have another more specific idea? You may want to check out our vibrant collecti
 
     Your site is now running at `http://localhost:8000`!
 
-    Note: You'll also see a second link: `http://localhost:8000/___graphql`. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby Tutorial](https://www.gatsbyjs.com/docs/tutorial/part-4/#use-graphiql-to-explore-the-data-layer-and-write-graphql-queries).
+    Note: You'll also see a second link: `http://localhost:8000/___graphql`.
 
-    Open the `my-hello-world-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
+    Don't forget to create a `.env` file and add the CONTENTFUL_ACCESS_TOKEN key to it.
+
+# Future Reference
+
+    Delete as and when required
+
+<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 
 ## 🚀 Quick start (Gatsby Cloud)
 

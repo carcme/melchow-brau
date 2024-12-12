@@ -2,19 +2,25 @@ import React from "react";
 import Layout from "../components/Layout";
 import { graphql } from "gatsby";
 import RecipesList from "../components/RecipesList";
-import SEO from "../components/SEO";
+import Seo from "../components/SEO";
 
-const Contact = ({ data }) => {
+const Contact = ({ data, title, text }) => {
   const recipes = data.allContentfulRecipe.nodes;
+  const { contactTitle, contactContent } = data.contentfulBreweryAbout;
+  const contactText = contactContent.contactContent.split("\n\n");
   return (
     <Layout>
-      <SEO title="Contact" description="" />
+      <Seo title="Contact" description="" />
       <main className="page">
         <section className="contact-page">
           <article>
-            <h3>Want to get in Touch?</h3>
+            {/* <h3>Want to get in Touch?</h3> */}
+            <h3>{contactTitle}</h3>
 
-            <p>
+            {contactText.map((item, index) => {
+              return <p key={index}>{item}</p>;
+            })}
+            {/* <p>
               A pissed mating ritual is wasted. Sometimes a Hoptoberfest
               hibernates, but the greasy porter always dances with the colt 45
               near the bud light!
@@ -33,7 +39,7 @@ const Contact = ({ data }) => {
               The bill of a monkey bite, a bottle of beer for a Heineken, and
               the sake bomb are what made America great! When you see a burly
               Stella Artois, it means that a keg related to the shot hides
-            </p>
+            </p> */}
           </article>
           <article>
             <form
@@ -70,6 +76,12 @@ const Contact = ({ data }) => {
 
 export const query = graphql`
   query {
+    contentfulBreweryAbout {
+      contactTitle
+      contactContent {
+        contactContent
+      }
+    }
     allContentfulRecipe(
       filter: { featured: { eq: true } }
       sort: { title: ASC }

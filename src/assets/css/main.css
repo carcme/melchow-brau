@@ -792,6 +792,7 @@ form > *:last-child {
 .single-ingredient {
   border-bottom: 1px solid var(--grey-500);
   padding-bottom: 0.75rem;
+  text-transform: capitalize;
 }
 .single-tool {
   border-bottom: 1px solid var(--grey-500);

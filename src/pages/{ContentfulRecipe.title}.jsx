@@ -5,7 +5,7 @@ import { BsClockHistory, BsClock, BsPercent } from "react-icons/bs";
 import { SiHomebrew } from "react-icons/si";
 import Layout from "../components/Layout";
 import slugify from "slugify";
-import SEO from "../components/SEO";
+import Seo from "../components/SEO";
 
 const RecipeTemplate = ({ data }) => {
   const {
@@ -23,7 +23,7 @@ const RecipeTemplate = ({ data }) => {
 
   return (
     <Layout>
-      <SEO title={title} description={description} />
+      <Seo title={title} description={description} />
       <main className="page">
         <div className="recipe-page">
           {/* hero */}
