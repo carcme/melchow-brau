@@ -9,17 +9,16 @@ import Seo from "../components/SEO";
 
 const About = ({
   data: {
-    contentfulBreweryAbout: {
-      title: aboutTitle,
-      content,
-      image: aboutImage,
-      contactTitle,
-      contactContent,
+    contentfulBreweryContent: {
+      aboutTitle,
+      aboutText,
+      aboutImage,
+      featuredProductsTitle,
     },
     allContentfulRecipe: { nodes: recipes },
   },
 }) => {
-  const aboutText = content.content.split("\n\n");
+  const textArr = aboutText.aboutText.split("\n\n");
   const pathToImage = getImage(aboutImage);
 
   return (
@@ -30,7 +29,7 @@ const About = ({
           <article>
             <h2>{aboutTitle}</h2>
 
-            {aboutText.map((item, index) => {
+            {textArr.map((item, index) => {
               return <p key={index}>{item}</p>;
             })}
 
@@ -40,7 +39,7 @@ const About = ({
           </article>
           <GatsbyImage
             image={pathToImage}
-            alt="Our brewery"
+            alt="About Us"
             className="about-img"
           />
 
@@ -52,7 +51,7 @@ const About = ({
           /> */}
         </section>
         <section className="featured-recipes">
-          <h5>Our Featured Awesomesauce!</h5>
+          <h5>{featuredProductsTitle}</h5>
           <RecipesList recipes={recipes} />
         </section>
       </main>
@@ -62,14 +61,15 @@ const About = ({
 
 export const query = graphql`
   query {
-    contentfulBreweryAbout {
-      title
-      content {
-        content
+    contentfulBreweryContent {
+      aboutTitle
+      aboutText {
+        aboutText
       }
-      image {
+      aboutImage {
         gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
       }
+      featuredProductsTitle
     }
     allContentfulRecipe(
       filter: { featured: { eq: true } }

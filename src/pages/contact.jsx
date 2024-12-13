@@ -2,12 +2,15 @@ import React from "react";
 import Layout from "../components/Layout";
 import { graphql } from "gatsby";
 import RecipesList from "../components/RecipesList";
+import { RiMailSendLine } from "react-icons/ri";
 import Seo from "../components/SEO";
 
-const Contact = ({ data, title, text }) => {
+const Contact = ({ data }) => {
   const recipes = data.allContentfulRecipe.nodes;
-  const { contactTitle, contactContent } = data.contentfulBreweryAbout;
-  const contactText = contactContent.contactContent.split("\n\n");
+  const { contactTitle, contactText, featuredProductsTitle } =
+    data.contentfulBreweryContent;
+  const textArr = contactText.contactText.split("\n\n");
+
   return (
     <Layout>
       <Seo title="Contact" description="" />
@@ -17,7 +20,7 @@ const Contact = ({ data, title, text }) => {
             {/* <h3>Want to get in Touch?</h3> */}
             <h3>{contactTitle}</h3>
 
-            {contactText.map((item, index) => {
+            {textArr.map((item, index) => {
               return <p key={index}>{item}</p>;
             })}
             {/* <p>
@@ -60,13 +63,13 @@ const Contact = ({ data, title, text }) => {
                 <textarea name="message" id="message"></textarea>
               </div>
               <button type="submit" className="btn block">
-                submit
+                <RiMailSendLine size={25} /> {/* send */}
               </button>
             </form>
           </article>
         </section>
         <section className="featured-recipes">
-          <h5>Our Featured Awesomesauce!</h5>
+          <h5>{featuredProductsTitle}</h5>
           <RecipesList recipes={recipes} />
         </section>
       </main>
@@ -76,11 +79,12 @@ const Contact = ({ data, title, text }) => {
 
 export const query = graphql`
   query {
-    contentfulBreweryAbout {
+    contentfulBreweryContent {
       contactTitle
-      contactContent {
-        contactContent
+      contactText {
+        contactText
       }
+      featuredProductsTitle
     }
     allContentfulRecipe(
       filter: { featured: { eq: true } }

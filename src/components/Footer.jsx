@@ -9,9 +9,7 @@ const Footer = () => {
         <Link to="/" className="span">
           <span>Melchow Brau</span>{" "}
         </Link>
-        | Built by {/* <a href="https://hammer3/"> */}
-        Hammer3
-        {/* </a>{" "} */}
+        | Built by <a href="https://hammer3.com/">Hammer3</a>
       </p>
     </footer>
   );
