@@ -15,10 +15,13 @@ const About = ({ data }) => {
   const local = locales.filter(
     (local) => local.node.node_locale === globalState.lang
   );
-  console.log("recipes", recipes);
-  const { aboutTitle, aboutText, aboutImage, featuredProductsTitle } =
-    local[0].node;
-  const textArr = aboutText.aboutText.split("\n\n");
+  const {
+    aboutTitle,
+    aboutText: { aboutText },
+    aboutImage,
+    featuredProductsTitle,
+  } = local[0].node;
+  const textArr = aboutText.split("\n\n");
   const pathToImage = getImage(aboutImage);
 
   return (

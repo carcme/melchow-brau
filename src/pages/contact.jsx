@@ -14,10 +14,14 @@ const Contact = ({ data }) => {
   const local = locales.filter(
     (local) => local.node.node_locale === globalState.lang
   );
-  const { contactTitle, contactText, featuredProductsTitle } = local[0].node;
+  const {
+    contactTitle,
+    contactText: { contactText },
+    featuredProductsTitle,
+  } = local[0].node;
 
   const { nodes: recipes } = data.allContentfulRecipe;
-  const textArr = contactText.contactText.split("\n\n");
+  const textArr = contactText.split("\n\n");
 
   return (
     <>

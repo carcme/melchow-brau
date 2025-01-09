@@ -1,31 +1,13 @@
 import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
+// import { useStaticQuery, graphql } from "gatsby";
 import Layout from "../components/Layout";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
+// import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import Seo from "../components/SEO";
-import CapitaliseLetter from "../components/CapitaliseLetter";
-
-const query = graphql`
-  {
-    allFile(filter: { ext: { ne: "svg" }, name: { ne: "logo" } }) {
-      nodes {
-        name
-        childImageSharp {
-          gatsbyImageData(
-            placeholder: DOMINANT_COLOR
-            layout: CONSTRAINED
-            width: 400
-            height: 200
-          )
-        }
-      }
-    }
-  }
-`;
+// import CapitaliseLetter from "../components/CapitaliseLetter";
 
 const Events = () => {
-  const data = useStaticQuery(query);
-  const nodes = data.allFile.nodes;
+  // const data = useStaticQuery(query);
+  // const nodes = data.allFile.nodes;
   return (
     <>
       <Layout>

@@ -7,7 +7,6 @@ exports.createPages = async ({ graphql, actions }) => {
     query GetRecipes {
       allContentfulRecipe {
         nodes {
-          title
           tags
         }
       }
@@ -15,7 +14,6 @@ exports.createPages = async ({ graphql, actions }) => {
   `);
 
   result.data.allContentfulRecipe.nodes.forEach((recipe) => {
-    console.log("createPage:", recipe);
     recipe.tags.forEach((tag) => {
       const tagSlug = slugify(tag, { lower: true });
       console.log("tagSlug: ", tagSlug);

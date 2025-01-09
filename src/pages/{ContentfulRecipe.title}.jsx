@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { graphql, Link } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { BsClockHistory, BsClock, BsPercent } from "react-icons/bs";
@@ -6,8 +6,13 @@ import { SiHomebrew } from "react-icons/si";
 import Layout from "../components/Layout";
 import slugify from "slugify";
 import Seo from "../components/SEO";
+import { GlobalStateContext } from "../context/GlobalContextProvider";
 
-const RecipeTemplate = ({ data }) => {
+const RecipeTemplate = ({ data, pageContext }) => {
+  const globalState = useContext(GlobalStateContext);
+  const nodes = data.allContentfulRecipe.nodes;
+
+  const locale = nodes.filter((node) => node.node_locale === globalState.lang);
   const {
     title,
     cookTime,
@@ -17,7 +22,7 @@ const RecipeTemplate = ({ data }) => {
     tags,
     description: { description },
     image,
-  } = data.contentfulRecipe;
+  } = locale[0];
 
   const pathToImage = getImage(image);
   const { instructions, ingredients, tools } = content;
@@ -124,25 +129,52 @@ const RecipeTemplate = ({ data }) => {
 
 export const query = graphql`
   query ($title: String) {
-    contentfulRecipe(title: { eq: $title }) {
-      title
-      cookTime
-      tags
-      content {
-        ingredients
-        instructions
-        tools
-      }
-      description {
-        description
-      }
-      prepTime
-      servings
-      image {
-        gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
+    allContentfulRecipe(filter: { title: { eq: $title } }) {
+      nodes {
+        title
+        node_locale
+        cookTime
+        tags
+        content {
+          ingredients
+          instructions
+          tools
+        }
+        description {
+          description
+        }
+        prepTime
+        servings
+        image {
+          gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
+        }
       }
     }
   }
 `;
+
+// export const query = graphql`
+//   query ($title: String, $locale: String) {
+//     contentfulRecipe(title: { eq: $title }, node_locale: { eq: $locale }) {
+//       title
+//       node_locale
+//       cookTime
+//       tags
+//       content {
+//         ingredients
+//         instructions
+//         tools
+//       }
+//       description {
+//         description
+//       }
+//       prepTime
+//       servings
+//       image {
+//         gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
+//       }
+//     }
+//   }
+// `;
 
 export default RecipeTemplate;
