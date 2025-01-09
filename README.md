@@ -7,9 +7,12 @@
   Melchow Brewery built with Gatsby
 </h1>
 
-Kick off your project with this hello-world boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
+A website for a private brewery north of Berlin
 
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.com/docs/gatsby-starters/)._
+### :gift: Helpful Resources
+
+- [Open Brewery DB](https://www.openbrewerydb.org/)
+- [emoji-cheat-sheet](https://github.com/ikatyang/emoji-cheat-sheet)
 
 ## 🚀 Quick start
 

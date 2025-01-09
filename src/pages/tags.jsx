@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import Layout from "../components/Layout";
 import { Link, graphql } from "gatsby";
 import setupTags from "../utils/setupTags";
 import slugify from "slugify";
 import Seo from "../components/SEO";
+import { GlobalStateContext } from "../context/GlobalContextProvider";
 
 const Tags = ({ data }) => {
-  const newTags = setupTags(data.allContentfulRecipe.nodes);
+  const nodes = data.allContentfulRecipe.nodes;
+  console.log("Tags", nodes);
+
+  const globalState = useContext(GlobalStateContext);
+
+  const recipes = nodes.filter(
+    (recipes) => recipes.node_locale === globalState.lang
+  );
+  const newTags = setupTags(recipes);
+
   return (
     <Layout>
       <Seo title="Tags" description="" />
@@ -30,11 +40,10 @@ const Tags = ({ data }) => {
 
 export const query = graphql`
   query {
-    allContentfulRecipe {
+    allContentfulRecipe(sort: { title: ASC }) {
       nodes {
-        content {
-          tags
-        }
+        node_locale
+        tags
       }
     }
   }

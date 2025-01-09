@@ -23,15 +23,21 @@ const query = graphql`
   }
 `;
 
-const Gallery = () => {
+const Events = () => {
   const data = useStaticQuery(query);
   const nodes = data.allFile.nodes;
   return (
     <>
       <Layout>
-        <Seo title="Gallery" description="" />
+        <Seo title="Events" description="Upcoming events" />
         <div className="page recipes-list">
-          {nodes.map((image, index) => {
+          <section className="about-page">
+            <article>
+              <h1 className="title-underline">TODO</h1>
+            </article>
+          </section>
+
+          {/* {nodes.map((image, index) => {
             const { name } = image;
             const pathToImage = getImage(image);
             return (
@@ -44,11 +50,11 @@ const Gallery = () => {
                 <p>{CapitaliseLetter(name)}</p>
               </article>
             );
-          })}
+          })} */}
         </div>
       </Layout>
     </>
   );
 };
 
-export default Gallery;
+export default Events;

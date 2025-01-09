@@ -1,30 +1,31 @@
-const path = require("path")
-const slugify = require("slugify")
+const path = require("path");
+const slugify = require("slugify");
 exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions
+  const { createPage } = actions;
 
   const result = await graphql(`
     query GetRecipes {
       allContentfulRecipe {
         nodes {
-          content {
-            tags
-          }
+          title
+          tags
         }
       }
     }
-  `)
+  `);
 
-  result.data.allContentfulRecipe.nodes.forEach(recipe => {
-    recipe.content.tags.forEach(tag => {
-      const tagSlug = slugify(tag, { lower: true })
+  result.data.allContentfulRecipe.nodes.forEach((recipe) => {
+    console.log("createPage:", recipe);
+    recipe.tags.forEach((tag) => {
+      const tagSlug = slugify(tag, { lower: true });
+      console.log("tagSlug: ", tagSlug);
       createPage({
         path: `/tags/${tagSlug}`,
         component: path.resolve(`src/templates/tag-template.jsx`),
         context: {
           tag: tag,
         },
-      })
-    })
-  })
-}
+      });
+    });
+  });
+};

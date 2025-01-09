@@ -1,29 +1,38 @@
-import React from "react";
+import React, { useContext } from "react";
 import Layout from "../components/Layout";
 import { graphql } from "gatsby";
 import RecipesList from "../components/RecipesList";
 import { RiMailSendLine } from "react-icons/ri";
 import Seo from "../components/SEO";
+import { GlobalStateContext } from "../context/GlobalContextProvider";
 
 const Contact = ({ data }) => {
-  const recipes = data.allContentfulRecipe.nodes;
-  const { contactTitle, contactText, featuredProductsTitle } =
-    data.contentfulBreweryContent;
+  const globalState = useContext(GlobalStateContext);
+  const { locales } = data.layout;
+
+  console.log("locales", locales);
+  const local = locales.filter(
+    (local) => local.node.node_locale === globalState.lang
+  );
+  const { contactTitle, contactText, featuredProductsTitle } = local[0].node;
+
+  const { nodes: recipes } = data.allContentfulRecipe;
   const textArr = contactText.contactText.split("\n\n");
 
   return (
-    <Layout>
-      <Seo title="Contact" description="" />
-      <main className="page">
-        <section className="contact-page">
-          <article>
-            {/* <h3>Want to get in Touch?</h3> */}
-            <h3>{contactTitle}</h3>
+    <>
+      <Layout>
+        <Seo title="Contact" description="" />
+        <main className="page">
+          <section className="contact-page">
+            <article>
+              {/* <h3>Want to get in Touch?</h3> */}
+              <h3>{contactTitle}</h3>
 
-            {textArr.map((item, index) => {
-              return <p key={index}>{item}</p>;
-            })}
-            {/* <p>
+              {textArr.map((item, index) => {
+                return <p key={index}>{item}</p>;
+              })}
+              {/* <p>
               A pissed mating ritual is wasted. Sometimes a Hoptoberfest
               hibernates, but the greasy porter always dances with the colt 45
               near the bud light!
@@ -43,48 +52,54 @@ const Contact = ({ data }) => {
               the sake bomb are what made America great! When you see a burly
               Stella Artois, it means that a keg related to the shot hides
             </p> */}
-          </article>
-          <article>
-            <form
-              className="form contact-form"
-              action="https://formspree.io/f/xeqwowza"
-              method="POST"
-            >
-              <div className="form-row">
-                <label htmlFor="name">your name</label>
-                <input type="text" name="name" id="name" />
-              </div>
-              <div className="form-row">
-                <label htmlFor="email">your email</label>
-                <input type="email" name="email" id="email" />
-              </div>
-              <div className="form-row">
-                <label htmlFor="message">message</label>
-                <textarea name="message" id="message"></textarea>
-              </div>
-              <button type="submit" className="btn block">
-                <RiMailSendLine size={25} /> {/* send */}
-              </button>
-            </form>
-          </article>
-        </section>
-        <section className="featured-recipes">
-          <h5>{featuredProductsTitle}</h5>
-          <RecipesList recipes={recipes} />
-        </section>
-      </main>
-    </Layout>
+            </article>
+            <article>
+              <form
+                className="form contact-form"
+                action="https://formspree.io/f/xeqwowza"
+                method="POST"
+              >
+                <div className="form-row">
+                  <label htmlFor="name">your name</label>
+                  <input type="text" name="name" id="name" />
+                </div>
+                <div className="form-row">
+                  <label htmlFor="email">your email</label>
+                  <input type="email" name="email" id="email" />
+                </div>
+                <div className="form-row">
+                  <label htmlFor="message">message</label>
+                  <textarea name="message" id="message"></textarea>
+                </div>
+                <button type="submit" className="btn block">
+                  <RiMailSendLine size={25} /> {/* send */}
+                </button>
+              </form>
+            </article>
+          </section>
+          <section className="featured-recipes">
+            <h5>{featuredProductsTitle}</h5>
+            <RecipesList recipes={recipes} />
+          </section>
+        </main>
+      </Layout>
+    </>
   );
 };
 
 export const query = graphql`
   query {
-    contentfulBreweryContent {
-      contactTitle
-      contactText {
-        contactText
+    layout: allContentfulBreweryContent {
+      locales: edges {
+        node {
+          node_locale
+          contactTitle
+          contactText {
+            contactText
+          }
+          featuredProductsTitle
+        }
       }
-      featuredProductsTitle
     }
     allContentfulRecipe(
       filter: { featured: { eq: true } }
@@ -92,6 +107,7 @@ export const query = graphql`
     ) {
       nodes {
         id
+        node_locale
         title
         cookTime
         prepTime

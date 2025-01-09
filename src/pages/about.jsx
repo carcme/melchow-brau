@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Layout from "../components/Layout";
 // import { StaticImage } from "gatsby-plugin-image";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
@@ -6,18 +6,18 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { Link, graphql } from "gatsby";
 import RecipesList from "../components/RecipesList";
 import Seo from "../components/SEO";
+import { GlobalStateContext } from "../context/GlobalContextProvider";
 
-const About = ({
-  data: {
-    contentfulBreweryContent: {
-      aboutTitle,
-      aboutText,
-      aboutImage,
-      featuredProductsTitle,
-    },
-    allContentfulRecipe: { nodes: recipes },
-  },
-}) => {
+const About = ({ data }) => {
+  const globalState = useContext(GlobalStateContext);
+  const { nodes: recipes } = data.allContentfulRecipe;
+  const { locales } = data.layout;
+  const local = locales.filter(
+    (local) => local.node.node_locale === globalState.lang
+  );
+  console.log("recipes", recipes);
+  const { aboutTitle, aboutText, aboutImage, featuredProductsTitle } =
+    local[0].node;
   const textArr = aboutText.aboutText.split("\n\n");
   const pathToImage = getImage(aboutImage);
 
@@ -61,22 +61,29 @@ const About = ({
 
 export const query = graphql`
   query {
-    contentfulBreweryContent {
-      aboutTitle
-      aboutText {
-        aboutText
+    layout: allContentfulBreweryContent {
+      locales: edges {
+        node {
+          node_locale
+          aboutTitle
+          aboutText {
+            aboutText
+          }
+          aboutImage {
+            gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
+          }
+          featuredProductsTitle
+        }
       }
-      aboutImage {
-        gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
-      }
-      featuredProductsTitle
     }
+
     allContentfulRecipe(
       filter: { featured: { eq: true } }
       sort: { title: ASC }
     ) {
       nodes {
         id
+        node_locale
         title
         cookTime
         prepTime

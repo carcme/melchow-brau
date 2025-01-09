@@ -1,5 +1,3 @@
-import React from "react";
-
 const CapitaliseLetter = (str) => {
   return str
     .toLowerCase()

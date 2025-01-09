@@ -6,6 +6,7 @@ import Seo from "../components/SEO";
 
 const TagTemplate = ({ data, pageContext }) => {
   const recipes = data.allContentfulRecipe.nodes;
+
   return (
     <Layout>
       <Seo title={pageContext.tag} />
@@ -21,17 +22,15 @@ const TagTemplate = ({ data, pageContext }) => {
 
 export const query = graphql`
   query GetRecipeByTag($tag: String) {
-    allContentfulRecipe(
-      sort: { fields: title, order: ASC }
-      filter: { content: { tags: { eq: $tag } } }
-    ) {
+    allContentfulRecipe(sort: { title: ASC }, filter: { tags: { eq: $tag } }) {
       nodes {
         title
+        node_locale
         id
         cookTime
         prepTime
         image {
-          gatsbyImageData(layout: CONSTRAINED, placeholder: TRACED_SVG)
+          gatsbyImageData(layout: CONSTRAINED, placeholder: DOMINANT_COLOR)
         }
       }
     }

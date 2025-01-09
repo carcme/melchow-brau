@@ -1,4 +1,6 @@
 /* @import url("https://fonts.googleapis.com/css?family=Montserrat:400|Inconsolata:400"); */
+@import "/node_modules/flag-icons/css/flag-icons.min.css";
+
 *,
 ::after,
 ::before {
@@ -215,22 +217,6 @@ button:hover,
   background: var(--melchow_hover);
   box-shadow: var(--shadow-2);
 }
-button.small {
-  padding: 0.25rem 0.5rem;
-  font-size: var(--smallText);
-}
-button.hipster {
-  color: var(--primary-500);
-  background: var(--primary-50);
-  box-shadow: var(--shadow-1);
-}
-button.hipster:hover {
-  background: var(--primary-100);
-  box-shadow: var(--shadow-2);
-}
-button.block {
-  width: 100%;
-}
 
 /* Basic Classes */
 .alert {
@@ -358,15 +344,34 @@ form > *:last-child {
 }
 .nav-header img {
   width: 200px;
-  margin-left: 1.6rem; /*
+  margin-left: 1.6rem;
+  /*
   margin-bottom: -9px; */
 }
 .nav-btn {
   padding: 0.5rem 0.65rem;
-  /* border-radius: 50%; */
 }
 .nav-btn svg {
   font-size: 1.5rem;
+}
+
+.lang-btn {
+  margin-bottom: 0em;
+  padding: none;
+  appearance: none;
+  color: none;
+  background: none;
+  border: none;
+  border-radius: none;
+  letter-spacing: none;
+  box-shadow: none;
+  transition: var(--transition);
+  text-transform: capitalize;
+}
+.lang-btn:hover {
+  color: var(--white);
+  background: none;
+  box-shadow: none;
 }
 .nav-links {
   height: 0;
@@ -421,6 +426,10 @@ form > *:last-child {
   }
   .nav-btn {
     display: none;
+  }
+
+  .lang-btn {
+    margin-right: -1rem;
   }
   .nav-links {
     height: auto !important;
