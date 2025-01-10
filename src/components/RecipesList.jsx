@@ -23,7 +23,7 @@ const RecipesList = ({ recipes = [] }) => {
           ignored++;
           if (ignored === recipes.length) {
             console.log("ignored all recipes!!");
-            // navigate("/tags");
+            navigate(-1);
           }
           return null;
         }
