@@ -30,9 +30,6 @@ const AllRecipes = () => {
   const recipes = data.allContentfulRecipe.nodes.filter(
     (recipe) => recipe.node_locale === globalState.lang
   );
-  // const recipes = data.allContentfulRecipe.nodes;
-
-  console.log("recipes", recipes);
 
   return (
     <section className="recipes-container">

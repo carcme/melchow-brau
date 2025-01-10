@@ -8,10 +8,7 @@ import { GlobalStateContext } from "../context/GlobalContextProvider";
 
 const Tags = ({ data }) => {
   const nodes = data.allContentfulRecipe.nodes;
-  console.log("Tags", nodes);
-
   const globalState = useContext(GlobalStateContext);
-
   const recipes = nodes.filter(
     (recipes) => recipes.node_locale === globalState.lang
   );

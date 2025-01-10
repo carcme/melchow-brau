@@ -6,7 +6,6 @@ import Seo from "../components/SEO";
 
 const TagTemplate = ({ data, pageContext }) => {
   const recipes = data.allContentfulRecipe.nodes;
-  console.log(recipes);
   return (
     <Layout>
       <Seo title={pageContext.tag} />

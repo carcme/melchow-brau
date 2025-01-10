@@ -9,8 +9,6 @@ import { GlobalStateContext } from "../context/GlobalContextProvider";
 const Contact = ({ data }) => {
   const globalState = useContext(GlobalStateContext);
   const { locales } = data.layout;
-
-  console.log("locales", locales);
   const local = locales.filter(
     (local) => local.node.node_locale === globalState.lang
   );

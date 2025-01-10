@@ -13,7 +13,6 @@ const RecipesList = ({ recipes = [] }) => {
       {recipes.map((recipe) => {
         if (recipe === null) {
           console.log("recipes is NULL");
-
           return null;
         }
         const { id, node_locale, title, image, prepTime, cookTime } = recipe;
@@ -21,11 +20,10 @@ const RecipesList = ({ recipes = [] }) => {
         const slug = slugify(title, { lower: true });
 
         if (node_locale !== globalState.lang) {
-          console.log("recipe.ignored", recipe.node_locale);
           ignored++;
           if (ignored === recipes.length) {
             console.log("ignored all recipes!!");
-            navigate("/tags");
+            // navigate("/tags");
           }
           return null;
         }
