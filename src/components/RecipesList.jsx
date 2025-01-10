@@ -1,13 +1,12 @@
 import React, { useContext } from "react";
-import { Link } from "gatsby";
+import { Link, navigate } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import slugify from "slugify";
 import { GlobalStateContext } from "../context/GlobalContextProvider";
 
 const RecipesList = ({ recipes = [] }) => {
   const globalState = useContext(GlobalStateContext);
-
-  console.log("RecipesList", recipes);
+  let ignored = 0;
 
   return (
     <div className="recipes-list">
@@ -23,10 +22,14 @@ const RecipesList = ({ recipes = [] }) => {
 
         if (node_locale !== globalState.lang) {
           console.log("recipe.ignored", recipe.node_locale);
+          ignored++;
+          if (ignored === recipes.length) {
+            console.log("ignored all recipes!!");
+            navigate("/tags");
+          }
           return null;
         }
         return (
-          // <Link key={id} to={`${globalState.lang}/${slug}`} className="recipe">
           <Link key={id} to={`/${slug}`} className="recipe">
             <GatsbyImage
               image={pathToImage}

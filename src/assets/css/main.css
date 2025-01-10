@@ -8,8 +8,13 @@
 }
 
 :root {
-  --melchow_primary: #5e2750;
-  --melchow_hover: #804972;
+  --melchow_primary: #034924;
+  --melchow_pale: #356d4f;
+  --melchow_dark: #023a1c;
+
+  --melchow_hover: #356d4f;
+
+  --melchow_icon_background: #f6e4b6;
 
   /* COLORS  */
   /* primary */
@@ -64,7 +69,7 @@
   --smallText: 0.8em;
   --extraSmallText: 0.7em;
   /* rest */
-  --backgroundColor: var(--grey-0);
+  --backgroundColor: var(--melchow_icon_background);
   --textColor: var(--grey-900);
   --borderRadius: 0.25rem;
   --letterSpacing: 1px;
@@ -395,6 +400,9 @@ form > *:last-child {
   border-top: 1px solid var(--grey-500);
   transition: var(--transition);
 }
+.nav-link:hover {
+  color: var(--grey-800);
+}
 .active-link {
   color: var(--melchow_primary);
 }
@@ -519,17 +527,20 @@ form > *:last-child {
 }
 .about-img {
   border-radius: var(--borderRadius);
-  height: 500px;
+  height: 400px;
+  width: 40%;
+  margin: auto;
+  display: block;
 }
 
 @media screen and (min-width: 992px) {
   .about-page {
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    height: 400px;
   }
   .about-img {
     height: 100%;
+    width: 100%;
   }
 }
 
@@ -782,6 +793,7 @@ form > *:last-child {
   grid-template-columns: auto 1fr;
   gap: 1.5rem;
   align-items: center;
+  color: var(--melchow_primary);
 }
 .single-instruction header p {
   text-transform: uppercase;
@@ -803,11 +815,12 @@ form > *:last-child {
 .single-ingredient {
   border-bottom: 1px solid var(--grey-500);
   padding-bottom: 0.75rem;
+  color: var(--grey-700);
   text-transform: capitalize;
 }
 .single-tool {
   border-bottom: 1px solid var(--grey-500);
   padding-bottom: 0.75rem;
-  color: var(--melchow_hover);
+  color: var(--grey-700);
   text-transform: capitalize;
 }

@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link } from "gatsby";
 import { FiAlignJustify } from "react-icons/fi";
-import logo from "../assets/images/logo.png";
+import logo from "../assets/images/logo.webp";
 import {
   GlobalDispatchContext,
   GlobalStateContext,

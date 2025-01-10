@@ -40,11 +40,13 @@ const About = ({ data }) => {
               contact
             </Link>
           </article>
-          <GatsbyImage
-            image={pathToImage}
-            alt="About Us"
-            className="about-img"
-          />
+          <article className="align-items-center">
+            <GatsbyImage
+              image={pathToImage}
+              alt="About Us"
+              className="about-img"
+            />
+          </article>
 
           {/* <StaticImage
             src="../assets/images/about.jpg"
