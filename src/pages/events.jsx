@@ -1,42 +1,90 @@
-import React from "react";
-// import { useStaticQuery, graphql } from "gatsby";
+import React, { useContext } from "react";
 import Layout from "../components/Layout";
-// import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { graphql } from "gatsby";
 import Seo from "../components/SEO";
-// import CapitaliseLetter from "../components/CapitaliseLetter";
+import { GlobalStateContext } from "../context/GlobalContextProvider";
 
-const Events = () => {
-  // const data = useStaticQuery(query);
-  // const nodes = data.allFile.nodes;
+const Events = ({ data }) => {
+  const globalState = useContext(GlobalStateContext);
+
+  const events = data.allContentfulBreweryEvent.nodes.filter(
+    (event) => event.node_locale === globalState.lang
+  );
+
+  const month = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
   return (
     <>
       <Layout>
         <Seo title="Events" description="Upcoming events" />
-        <div className="page recipes-list">
-          <section className="about-page">
+        <main className="page">
+          <section className="events-page">
             <article>
-              <h1 className="title-underline">TODO</h1>
+              <h2>Upcoming Events</h2>
+
+              {events === null && <h4>No events available</h4>}
+              {events !== null &&
+                events.map((event) => {
+                  const { id, category, title, description, date, time } =
+                    event;
+
+                  const dateObj = date.split("-");
+                  const dayTime = dateObj[2].split("T");
+
+                  return (
+                    <div key={id} className="courses-container">
+                      <div className="course">
+                        <div className="course-preview">
+                          <h4 style={{ paddingBottom: "30px" }}>{time}</h4>
+                          <h6>{dayTime[0]}</h6>
+                          <h6>{month[parseInt(dateObj[1]) - 1]}</h6>
+                        </div>
+                        <div className="course-info">
+                          <h6>{category}</h6>
+                          <h3>{title}</h3>
+                          <p>{description.description}</p>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
             </article>
           </section>
-
-          {/* {nodes.map((image, index) => {
-            const { name } = image;
-            const pathToImage = getImage(image);
-            return (
-              <article key={index} className="item">
-                <GatsbyImage
-                  image={pathToImage}
-                  alt="gallery image"
-                  className="gallery-img"
-                />
-                <p>{CapitaliseLetter(name)}</p>
-              </article>
-            );
-          })} */}
-        </div>
+        </main>
       </Layout>
     </>
   );
 };
+
+export const query = graphql`
+  query {
+    allContentfulBreweryEvent {
+      nodes {
+        id
+        node_locale
+        category
+        title
+        description {
+          description
+        }
+        date
+        time
+      }
+    }
+  }
+`;
 
 export default Events;

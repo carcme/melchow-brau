@@ -8,7 +8,7 @@ import slugify from "slugify";
 import Seo from "../components/SEO";
 import { GlobalStateContext } from "../context/GlobalContextProvider";
 
-const RecipeTemplate = ({ data, pageContext }) => {
+const RecipeTemplate = ({ data }) => {
   const globalState = useContext(GlobalStateContext);
   const nodes = data.allContentfulRecipe.nodes;
 
