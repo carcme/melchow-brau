@@ -3,6 +3,7 @@ import Layout from "../components/Layout";
 import { graphql } from "gatsby";
 import Seo from "../components/SEO";
 import { GlobalStateContext } from "../context/GlobalContextProvider";
+import { monthToStr } from "../utils/monthToString";
 
 const Events = ({ data }) => {
   const globalState = useContext(GlobalStateContext);
@@ -11,28 +12,26 @@ const Events = ({ data }) => {
     (event) => event.node_locale === globalState.lang
   );
 
-  const month = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-
+  // get todays date and format it
+  const today = new Date();
+  const month = today.getMonth() + 1;
+  const year = today.getFullYear();
+  const day = today.getDate();
+  const currentDate =
+    year +
+    "-" +
+    (month < 10 ? "0" + month : month) +
+    "-" +
+    (day < 10 ? "0" + day : day);
   return (
     <>
       <Layout>
         <Seo title="Events" description="Upcoming events" />
         <main className="page">
-          <section className="events-page">
-            <article>
+          <section className="">
+            <article className="">
+              {/* <h2 className="left-span">Upcoming</h2>
+              <h2 className="right-span">Events</h2> */}
               <h2>Upcoming Events</h2>
 
               {events === null && <h4>No events available</h4>}
@@ -45,22 +44,34 @@ const Events = ({ data }) => {
                   const dayTime = dateObj[2].split("T");
 
                   return (
-                    <div key={id} className="courses-container">
-                      <div className="course">
-                        <div className="course-preview">
-                          <h4 style={{ paddingBottom: "30px" }}>{time}</h4>
-                          <h6>{dayTime[0]}</h6>
-                          <h6>{month[parseInt(dateObj[1]) - 1]}</h6>
+                    <div key={id} className="events-container">
+                      <div className="event-card">
+                        <div className="date-container">
+                          <p className="time">{time}</p>
+                          <div className="when-container">
+                            <p className="day">{dayTime[0]}</p>
+                            <p className="month">
+                              {monthToStr[parseInt(dateObj[1]) - 1]}
+                            </p>
+                          </div>
                         </div>
-                        <div className="course-info">
-                          <h6>{category}</h6>
-                          <h3>{title}</h3>
-                          <p>{description.description}</p>
+                        <div className="event-content">
+                          <p className="category">{category}</p>
+                          <p className="title">{title}</p>
+                          <p className="desc">{description.description}</p>
                         </div>
                       </div>
                     </div>
                   );
                 })}
+            </article>
+          </section>
+          <section className="previous-events">
+            <article className="">
+              {/* <h2 className="left-span">Upcoming</h2>
+              <h2 className="right-span">Events</h2> */}
+              <h2>Previous Events</h2>
+              <p>No previous events found</p>
             </article>
           </section>
         </main>

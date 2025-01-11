@@ -827,55 +827,44 @@ form > *:last-child {
 /* Events */
 /*#########*/
 
+.previous-events {
+  padding-top: 3rem;
+  padding-bottom: 10rem;
+}
+
 .events-page h2 {
   text-transform: none;
   font-weight: bold;
 }
-.events-page {
-  display: grid;
-  gap: 2rem 4rem;
-  padding-bottom: 3rem;
-}
 
-.courses-container {
+.events-container {
   margin: auto;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.course {
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+.event-card {
   display: flex;
+  flex-direction: row;
+  background-color: #ddcda3;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
   max-width: 100%;
+  width: 700px;
   margin: 20px;
   overflow: hidden;
-  width: 700px;
-  opacity: 0.6;
+  opacity: 0.9;
 }
 
-.course h6 {
-  opacity: 0.6;
-  margin: 0;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-.course h2 {
-  letter-spacing: 1px;
-  margin: 10px 0;
-}
-
-.course-preview {
+.date-container {
   background-color: var(--melchow_primary);
   color: #fff;
-  padding: 30px;
-  max-width: 250px;
+  padding: 10px;
+  width: 120px;
 }
 
-.course-preview a {
+.date-container a {
   color: #fff;
   display: inline-block;
   font-size: 12px;
@@ -883,65 +872,96 @@ form > *:last-child {
   margin-top: 30px;
   text-decoration: none;
 }
+.date-container .time {
+  margin-top: 1rem;
+  text-align: center; /* Align the date to the left */
+  font-size: 20px;
+  font-weight: bold;
+}
 
-.course-info {
+.when-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: center;
+}
+.date-container .when-container .day {
+  margin-top: 1rem;
+  text-align: left; /* Align the date to the left */
+  justify-content: end; /* Align the date to the left */
+  font-size: 14px;
+  margin: 0;
+}
+.date-container .when-container .month {
+  text-align: left; /* Align the date to the left */
+  justify-content: end; /* Align the date to the left */
+  font-size: 14px;
+  margin: 0;
+}
+
+.event-content {
   padding: 30px;
-  position: relative;
   width: 100%;
 }
-.course-info p {
+.event-content .category {
+  color: var(--black);
+  text-transform: capitalize;
+  font-family: var(--headingFont);
+}
+.event-content .title {
+  color: var(--melchow_primary);
+  text-transform: capitalize;
+  /* text-align: start; */
+  font-size: 1.8rem;
+  font-family: var(--headingFont);
+  font-weight: bold;
+}
+.event-content .desc {
+  color: var(--black);
   font-size: 14px;
 }
 
-.progress-container {
-  position: absolute;
-  top: 30px;
-  right: 30px;
-  text-align: right;
-  width: 150px;
+@media (max-width: 768px) {
+  .event-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .date-container {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 6rem;
+  }
+  .when-container {
+    align-items: left;
+    margin-right: 1rem;
+  }
+
+  .date-container .time {
+    text-align: left;
+    padding-left: 30px;
+  }
+  .date-container .date {
+    text-align: left;
+    padding-left: 10px;
+  }
+  .content {
+    padding: 20px;
+  }
+
+  .event-content .category {
+    padding-top: 0;
+  }
 }
 
-.progress {
-  background-color: #ddd;
-  border-radius: 3px;
-  height: 5px;
-  width: 100%;
-}
-
-.progress::after {
-  border-radius: 3px;
-  background-color: #2a265f;
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 5px;
-  width: 66%;
-}
-
-.progress-text {
-  font-size: 10px;
-  opacity: 0.6;
-  letter-spacing: 1px;
-}
-
-.btn {
-  background-color: var(--melchow_primary);
-  border: 0;
-  border-radius: 50px;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
-  color: #fff;
-  font-size: 16px;
-  padding: 12px 25px;
-  position: absolute;
-  bottom: 30px;
-  right: 30px;
-  letter-spacing: 1px;
-}
+/*#########*/
 
 .left-span {
   position: absolute;
-  top: 0;
+  top: 5rem;
   left: 0;
   font-size: 10rem;
   font-weight: 800;
