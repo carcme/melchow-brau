@@ -154,7 +154,7 @@ a {
 .img {
   width: 100%;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
 }
 .form {
   width: 100%;
@@ -220,7 +220,9 @@ button:hover,
   background: var(--melchow_hover);
   box-shadow: var(--shadow-2);
 }
-
+.btn-block {
+  width: 100%;
+}
 /* Basic Classes */
 .alert {
   padding: 0.375rem 0.75rem;
@@ -510,6 +512,43 @@ form > *:last-child {
   }
 }
 
+.contact-info .location {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.contact-info .location .info,
+.contact-info .location .map {
+  margin-inline: 20px;
+  width: 100%;
+}
+
+.contact-info .location .info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.info p {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+iframe {
+  width: 100%;
+  height: 300px;
+  border: 0;
+}
+
+@media (max-width: 768px) {
+  .contact-info .location {
+    flex-direction: column;
+    align-items: center;
+  }
+}
 /*#########*/
 /* About */
 /*#########*/
@@ -526,9 +565,10 @@ form > *:last-child {
 .about-img {
   border-radius: var(--borderRadius);
   height: 400px;
-  width: 40%;
+  width: 100%;
   margin: auto;
   display: block;
+  object-fit: contain;
 }
 
 @media screen and (min-width: 992px) {
@@ -539,6 +579,7 @@ form > *:last-child {
   .about-img {
     height: 100%;
     width: 100%;
+    object-fit: contain;
   }
 }
 
@@ -731,6 +772,8 @@ form > *:last-child {
 }
 .recipe-hero .about-img {
   height: 400px;
+  width: 100%;
+  object-fit: contain;
 }
 .recipe-icons {
   display: flex;
@@ -847,7 +890,7 @@ form > *:last-child {
 .event-card {
   display: flex;
   flex-direction: row;
-  background-color: #ddcda3;
+  background-color: #faf1da;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   max-width: 100%;
@@ -908,6 +951,8 @@ form > *:last-child {
   color: var(--black);
   text-transform: capitalize;
   font-family: var(--headingFont);
+  align-items: right;
+  margin: 0;
 }
 .event-content .title {
   color: var(--melchow_primary);
@@ -916,10 +961,12 @@ form > *:last-child {
   font-size: 1.8rem;
   font-family: var(--headingFont);
   font-weight: bold;
+  margin-bottom: 5px;
 }
 .event-content .desc {
   color: var(--black);
   font-size: 14px;
+  margin: 0;
 }
 
 @media (max-width: 768px) {

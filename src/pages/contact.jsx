@@ -8,6 +8,7 @@ import { GlobalStateContext } from "../context/GlobalContextProvider";
 
 const Contact = ({ data }) => {
   const globalState = useContext(GlobalStateContext);
+
   const { locales } = data.layout;
   const local = locales.filter(
     (local) => local.node.node_locale === globalState.lang
@@ -18,7 +19,7 @@ const Contact = ({ data }) => {
     featuredProductsTitle,
   } = local[0].node;
 
-  const { nodes: recipes } = data.allContentfulRecipe;
+  const { nodes: recipes } = data.allContentfulBreweryProduct;
   const textArr = contactText.split("\n\n");
 
   return (
@@ -34,26 +35,6 @@ const Contact = ({ data }) => {
               {textArr.map((item, index) => {
                 return <p key={index}>{item}</p>;
               })}
-              {/* <p>
-              A pissed mating ritual is wasted. Sometimes a Hoptoberfest
-              hibernates, but the greasy porter always dances with the colt 45
-              near the bud light!
-            </p>
-            <p>
-              A fashionable Strohs earns enough for a beer, and the booze
-              self-flagellates; however, a Home brew operates a small bar with
-              the blood clot.
-            </p>
-            <p>
-              A Home brew over a Christmas Ale throws a bottle of beer at a Lone
-              Star defined by a power drill drink, and the fried Miller writes a
-              love letter to the Bacardi Silver.
-            </p>
-            <p>
-              The bill of a monkey bite, a bottle of beer for a Heineken, and
-              the sake bomb are what made America great! When you see a burly
-              Stella Artois, it means that a keg related to the shot hides
-            </p> */}
             </article>
             <article>
               <form
@@ -73,11 +54,49 @@ const Contact = ({ data }) => {
                   <label htmlFor="message">message</label>
                   <textarea name="message" id="message"></textarea>
                 </div>
-                <button type="submit" className="btn block">
+                <button type="submit" className="btn-block">
                   <RiMailSendLine size={25} /> {/* send */}
                 </button>
               </form>
             </article>
+          </section>
+          <section className="contact-info">
+            <div class="location">
+              <div class="map">
+                <iframe
+                  title="map"
+                  src="https://www.google.com/maps/embed?pb=!1m16!1m10!1m3!1d351231.1553743857!2d13.330208186202547!3d52.741960580018386!2m1!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a9b9d9f59a6faf%3A0xa7807b9ff7220481!2sAlte%20Dorfstra%C3%9Fe%203%2C%2016230%20Melchow!5e0!3m2!1sen!2sde!4v1736683226606!5m2!1sen!2sde"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerPolicy="noReferrerWhenDowngrade"
+                ></iframe>
+
+                {/*  zoomed in map 
+                  <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d502.4487760450007!2d13.70365873110184!3d52.77510537024047!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a9b9d9f59a6faf%3A0xa7807b9ff7220481!2sAlte%20Dorfstra%C3%9Fe%203%2C%2016230%20Melchow!5e0!3m2!1sen!2sde!4v1736678500826!5m2!1sen!2sde"
+                  allowfullscreen=""
+                  loading="lazy"
+                  title="map"
+                  referrerPolicy="noReferrerWhenDowngrade"
+                  style={{
+                    filter: "grayscale(0) contrast(1) invert(0%)",
+                  }}
+                ></iframe> */}
+              </div>{" "}
+              <div class="info">
+                {globalState.lang === "en" && <h4>Our Address</h4>}
+                {globalState.lang === "de" && <h4>Unsere Adresse</h4>}
+                <p>Alte Dorfstraße 3,</p>
+                <p>16230</p>
+                <p>Melchow</p>
+                <p>
+                  <strong>Phone:</strong> (+49) 123 456 78
+                </p>
+                <p>
+                  <strong>Email:</strong> todo@todo.com
+                </p>
+              </div>
+            </div>
           </section>
           <section className="featured-recipes">
             <h5>{featuredProductsTitle}</h5>
@@ -103,7 +122,7 @@ export const query = graphql`
         }
       }
     }
-    allContentfulRecipe(
+    allContentfulBreweryProduct(
       filter: { featured: { eq: true } }
       sort: { title: ASC }
     ) {

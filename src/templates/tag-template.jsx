@@ -5,7 +5,7 @@ import Layout from "../components/Layout";
 import Seo from "../components/SEO";
 
 const TagTemplate = ({ data, pageContext }) => {
-  const recipes = data.allContentfulRecipe.nodes;
+  const recipes = data.allContentfulBreweryProduct.nodes;
   return (
     <Layout>
       <Seo title={pageContext.tag} />
@@ -20,8 +20,11 @@ const TagTemplate = ({ data, pageContext }) => {
 };
 
 export const query = graphql`
-  query GetRecipeByTag($tag: String) {
-    allContentfulRecipe(sort: { title: ASC }, filter: { tags: { eq: $tag } }) {
+  query GetProductByTag($tag: String) {
+    allContentfulBreweryProduct(
+      sort: { title: ASC }
+      filter: { tags: { eq: $tag } }
+    ) {
       nodes {
         title
         node_locale

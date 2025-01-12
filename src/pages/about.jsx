@@ -10,7 +10,7 @@ import { GlobalStateContext } from "../context/GlobalContextProvider";
 
 const About = ({ data }) => {
   const globalState = useContext(GlobalStateContext);
-  const { nodes: recipes } = data.allContentfulRecipe;
+  const { nodes: recipes } = data.allContentfulBreweryProduct;
   const { locales } = data.layout;
   const local = locales.filter(
     (local) => local.node.node_locale === globalState.lang
@@ -40,11 +40,11 @@ const About = ({ data }) => {
               contact
             </Link>
           </article>
-          <article className="align-items-center">
+          <article className="">
             <GatsbyImage
               image={pathToImage}
               alt="About Us"
-              className="about-img"
+              className="style={{objectFit: 'contain'}}"
             />
           </article>
 
@@ -82,7 +82,7 @@ export const query = graphql`
       }
     }
 
-    allContentfulRecipe(
+    allContentfulBreweryProduct(
       filter: { featured: { eq: true } }
       sort: { title: ASC }
     ) {

@@ -10,18 +10,18 @@
 
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
-})
+});
 
 module.exports = {
   siteMetadata: {
     title: "Melchow Brau",
     description: "Brewery in Melchow",
-    author: 'hammer.de',
+    author: "hammer.de",
     person: { name: "frank", age: 51 },
     simpleData: ["item 1", "item 2", "item 3"],
     complexData: [
-      {name: "marc", age: 5, sex:'male'},
-      {name: "susanne", age: 40, sex:'female'},
+      { name: "marc", age: 5, sex: "male" },
+      { name: "susanne", age: 40, sex: "female" },
     ],
   },
   plugins: [
@@ -39,7 +39,8 @@ module.exports = {
     {
       resolve: `gatsby-source-contentful`,
       options: {
-        spaceId: `d2miw24ee2ig`,
+        spaceId: `bttbuvpdtypv`,
+        //spaceId: `d2miw24ee2ig`,
         // Learn about environment variables: https://gatsby.dev/env-vars
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       },
@@ -65,4 +66,4 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-netlify`,
   ],
-}
+};

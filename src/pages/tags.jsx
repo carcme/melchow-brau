@@ -7,7 +7,7 @@ import Seo from "../components/SEO";
 import { GlobalStateContext } from "../context/GlobalContextProvider";
 
 const Tags = ({ data }) => {
-  const nodes = data.allContentfulRecipe.nodes;
+  const nodes = data.allContentfulBreweryProduct.nodes;
   const globalState = useContext(GlobalStateContext);
   const recipes = nodes.filter(
     (recipes) => recipes.node_locale === globalState.lang
@@ -37,7 +37,7 @@ const Tags = ({ data }) => {
 
 export const query = graphql`
   query {
-    allContentfulRecipe(sort: { title: ASC }) {
+    allContentfulBreweryProduct(sort: { title: ASC }) {
       nodes {
         node_locale
         tags

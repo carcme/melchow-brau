@@ -8,9 +8,9 @@ import slugify from "slugify";
 import Seo from "../components/SEO";
 import { GlobalStateContext } from "../context/GlobalContextProvider";
 
-const RecipeTemplate = ({ data }) => {
+const BreweryProductTemplate = ({ data }) => {
   const globalState = useContext(GlobalStateContext);
-  const nodes = data.allContentfulRecipe.nodes;
+  const nodes = data.allContentfulBreweryProduct.nodes;
 
   const locale = nodes.filter((node) => node.node_locale === globalState.lang);
   const {
@@ -129,7 +129,7 @@ const RecipeTemplate = ({ data }) => {
 
 export const query = graphql`
   query ($title: String) {
-    allContentfulRecipe(filter: { title: { eq: $title } }) {
+    allContentfulBreweryProduct(filter: { title: { eq: $title } }) {
       nodes {
         title
         node_locale
@@ -153,28 +153,4 @@ export const query = graphql`
   }
 `;
 
-// export const query = graphql`
-//   query ($title: String, $locale: String) {
-//     contentfulRecipe(title: { eq: $title }, node_locale: { eq: $locale }) {
-//       title
-//       node_locale
-//       cookTime
-//       tags
-//       content {
-//         ingredients
-//         instructions
-//         tools
-//       }
-//       description {
-//         description
-//       }
-//       prepTime
-//       servings
-//       image {
-//         gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
-//       }
-//     }
-//   }
-// `;
-
-export default RecipeTemplate;
+export default BreweryProductTemplate;

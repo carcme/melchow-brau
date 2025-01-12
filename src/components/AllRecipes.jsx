@@ -6,7 +6,7 @@ import { GlobalStateContext } from "../context/GlobalContextProvider";
 
 const query = graphql`
   query {
-    allContentfulRecipe(sort: { title: ASC }) {
+    allContentfulBreweryProduct(sort: { title: ASC }) {
       nodes {
         id
         node_locale
@@ -27,7 +27,7 @@ const query = graphql`
 const AllRecipes = () => {
   const globalState = useContext(GlobalStateContext);
   const data = useStaticQuery(query);
-  const recipes = data.allContentfulRecipe.nodes.filter(
+  const recipes = data.allContentfulBreweryProduct.nodes.filter(
     (recipe) => recipe.node_locale === globalState.lang
   );
 
